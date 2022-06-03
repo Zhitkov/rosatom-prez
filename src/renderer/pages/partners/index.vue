@@ -10,15 +10,11 @@
         class="partners-item"
       >
 
-        <div @click="switchModal(index, partner.title)">
-          {{partner.title}}
+        <div @click="CHANGE_PAGE_STATUS(partner.title)" class="control-item">
+          <NuxtLink :to="'/partners/' + index">{{partner.title}}</NuxtLink>
         </div>
       </div>
     </div>
-    <ModalSwitch
-      v-show="modal"
-      :partner="partners[modalStatus]"
-    ></ModalSwitch>
   </div>
 </template>
 

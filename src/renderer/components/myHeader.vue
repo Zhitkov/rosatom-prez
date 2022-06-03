@@ -5,13 +5,13 @@
       <h2 v-show="$route.path !== '/'">{{pageStatus}}</h2>
       <button
         class="control-item"
-        v-show="$route.path !== '/' && !modal"
+        v-show="($route.path !== '/') && !/\/partners\//.test($route.path)"
         @click="$router.go(-1)"
       >Назад </button>
       <button
         class="control-item"
-        v-show="modal"
-        @click="returnBack('Социальное партнерство')"
+        v-show="/\/partners\//.test($route.path)"
+        @click="CHANGE_PAGE_STATUS('Социальное партнерство'); $router.go(-1)"
       >Вернуться в Социальное партнерство </button>
     </div>
   </nav>
@@ -24,10 +24,6 @@ export default {
   name: 'myHeader',
   methods: {
     ...mapMutations(['CHANGE_PAGE_STATUS', 'SWITCH_MODAL']),
-    returnBack(pageStaus) {
-      this.CHANGE_PAGE_STATUS(pageStaus);
-      this.SWITCH_MODAL();
-    }
   },
   computed: {
     ...mapGetters([

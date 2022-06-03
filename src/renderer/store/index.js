@@ -80,6 +80,9 @@ export const getters = {
     modal(state) {
         return state.modal
     },
+    workerPhotos(state) {
+        return state.imgs.partners.workers.jpg
+    },
     pageStatus(state) {
         return state.pageStatus
     }

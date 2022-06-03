@@ -31,9 +31,12 @@ export default {
   row-gap: 20px;
 }
 .photos-item {
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: auto;
   margin: 3% 5%; 
   text-align: center;
+}
+.photos-item > img {
+  width: 100%;
 }
 </style>
