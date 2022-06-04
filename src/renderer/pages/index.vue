@@ -68,7 +68,7 @@ body {
   justify-content: center;
   background-color: #e9e9e9;
   border: 2px solid #1d4d79;
-  /* border-radius: 10px; */
+  border-radius: 50px;
 }
 .control-item > a {
   color: white;

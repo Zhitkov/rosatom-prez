@@ -4,7 +4,7 @@
     class="navbar"
   >
     <div class="navbar-title">
-      <h2 v-show="$route.path === '/'">Страна Росатом</h2>
+      <h2 v-show="$route.path === '/'">Работа с персоналом</h2>
       <h2 v-show="$route.path !== '/'">{{pageStatus}}</h2>
       <button
         class="header-button"
@@ -82,10 +82,10 @@ nav.navbar > .navbar-title > h2 {
   min-width: 13vw;
   height: 6vh;
   text-decoration: none;
-  color: #0159a1;
-  background-color: white;
+  color: white;
+  background-color: #277ec4;
   border: none;
-  /* border-radius: 20px; */
+  border-radius: 20px;
   font-size: 14pt;
   font-weight: 400;
 }

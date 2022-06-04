@@ -51,7 +51,7 @@ export default {
 }
 
 .bottom-close {
-  background-color: #105ea4;
+  /* background-color: #105ea4; */
 }
 
 .preview-button{
@@ -61,7 +61,7 @@ export default {
   color: white;
   background-color: #0159a1 ;
   border: none;
-  /* border-radius: 20px; */
+  border-radius: 30px;
   font-size: 14pt;
   padding: 1vw 1vh;
   font-weight: 400;
