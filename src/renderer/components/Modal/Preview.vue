@@ -1,34 +1,45 @@
 <template>
-  <div class="previw-container">
-    <div class="previw-items">
-      <div v-show="svgPreview && previewShow" :style="'background-image: ' + svgPreview" class="previw">
-          <button @click="previewShow = !previewShow">Перейти к галереи фотографий</button>
-      </div>
-      
+  <div class="preview-container flex-center">
+    <div class="preview-items">
+      <WidgetCarousel :currentItem="currentItem" :arrows="arrows" :items="jpgs"></WidgetCarousel>  
+    </div>
+    <div class="bottom-close flex-center">
+      <button class="control-item">Закрыть</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            previewShow: true
-        }
-    },
+    // data() {
+    //     return {
+    //         previewShow: true
+    //     }
+    // },
   props: {
+    arrows: Boolean,
     jpgs: Array,
-    svgPreview: String
+    currentItem: Number
   }
 }
 </script>
 
 <style>
-.previw {
+.preview-container {
     width: 100vw;
     height: 100vh;
     position: absolute;
     z-index: 1;
+    flex-direction: column
+
+}
+.preview-items {
+  width: 100%;
+  height: 80%;
+}
+
+.bottom-close {
+  background-color: #105ea4;
 }
 
 </style>

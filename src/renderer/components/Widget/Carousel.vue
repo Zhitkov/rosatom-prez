@@ -1,39 +1,37 @@
 <template>
-  <div>
-    <div class="carousel-container">
+  <div class="carousel-container flex-center">
+    <div
+      class="arrow right"
+      @click="switcher(1)"
+      v-show="arrows"
+    >
+      <img
+        src="@/assets/icons/arrows/left.svg"
+        alt=""
+      >
+    </div>
+    <div class="carousel-items">
       <div
-        @click="switcher(1)"
-        class="arrow-right"
-        v-show="arrows"
+        v-show="c === index"
+        class="carousel-item"
+        v-for="(item, index) in items"
+        :key="index"
       >
         <img
-          src="@/assets/icons/arrows/left.svg"
+          :src="item"
           alt=""
         >
       </div>
-      <div class="carousel-items">
-        <div
-          v-show="c === index"
-          class="carousel-item"
-          v-for="(item, index) in items"
-          :key="index"
-        >
-          <img
-            :src="item"
-            alt=""
-          >
-        </div>
-      </div>
-      <div
-        @click="switcher(-1)"
-        class="arrow-left"
-        v-show="arrows"
+    </div>
+    <div
+      @click="switcher(-1)"
+      class="arrow left"
+      v-show="arrows"
+    >
+      <img
+        src="@/assets/icons/arrows/right.svg"
+        alt=""
       >
-        <img
-          src="@/assets/icons/arrows/right.svg"
-          alt=""
-        >
-      </div>
     </div>
   </div>
 </template>
@@ -42,10 +40,11 @@
 export default {
   data: function () {
     return {
-      c: 0
+      c: this.currentItem
     }
   },
   props: {
+    currentItem: Number,
     items: Array,
     arrows: Boolean
   },
@@ -64,4 +63,43 @@ export default {
 </script>
 
 <style>
+.carousel-container {
+  width: 100vw;
+  height: 73vh;
+  flex-direction: row;
+}
+.carousel-items {
+  width: 100%;
+  height: 100%;
+}
+.carousel-item {
+  width: 100%;
+  height: 100%;
+}
+.carousel-item > img {
+  width: 100%;
+  height: 100%;
+}
+.arrow {
+  position: absolute;
+  z-index: 99;
+}
+.arrow.left {
+  left: 91vw;
+  height: 73%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff7a;
+  top: 27vh;
+}
+.arrow.right {
+  left: 0%;
+  height: 73%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff7a;
+  top: 27vh;
+}
 </style>

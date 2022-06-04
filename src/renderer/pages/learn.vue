@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <WidgetCarousel :items="learn.svg" :arrows="true"></WidgetCarousel>
+    <WidgetCarousel :items="learn.svg" :arrows="true" :currentItem="0"></WidgetCarousel>
   </div>
 </template>
 

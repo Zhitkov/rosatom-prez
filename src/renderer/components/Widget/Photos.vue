@@ -1,18 +1,31 @@
 <template>
   <div class="photos-container">
-      <div class="photos-items">
-          <div v-for="(jpg, id) in jpgs" :key="id" class="photos-item">
-            <img :src="jpg" alt="">
-          </div>
+    <div class="photos-items">
+      <div
+        v-for="(jpg, id) in jpgs"
+        :key="id"
+        @click="startCarousel(id)"
+        class="photos-item"
+      >
+        <img
+          :src="jpg"
+          alt=""
+        >
       </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    props: {
-        jpgs: Array
+  props: {
+    jpgs: Array
+  },
+  methods: {
+    startCarousel(id) {
+      this.$emit('startCarousel', id)
     }
+  }
 
 }
 </script>
@@ -33,7 +46,7 @@ export default {
 .photos-item {
   width: 100px;
   height: auto;
-  margin: 3% 5%; 
+  margin: 3% 5%;
   text-align: center;
 }
 .photos-item > img {
