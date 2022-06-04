@@ -1,18 +1,29 @@
 <template>
-  <nav class="navbar">
+  <nav
+    v-show="!modal"
+    class="navbar"
+  >
     <div class="navbar-title">
       <h2 v-show="$route.path === '/'">Страна Росатом</h2>
       <h2 v-show="$route.path !== '/'">{{pageStatus}}</h2>
       <button
-        class="control-item"
-        v-show="($route.path !== '/') && !/\/partners\//.test($route.path)"
+        class="header-button"
+        v-show="($route.path !== '/')"
         @click="$router.go(-1)"
-      >Назад </button>
+      ><p>Назад</p> </button>
+        <!-- v-show="($route.path !== '/') && !/\/partners\//.test($route.path) && !/\/youngs\//.test($route.path) && !/\/youngs/.test($route.path)" -->
+      <!-- <button
+        class="header-button"
+        v-show="/\/partners\//.test($route.path) || /\/youngs/.test($route.path)"
+        @click="CHANGE_PAGE_STATUS('Социальное партнерство'); $router.push('/partners')"
+      ><p>Вернуться в Социальное партнерство </p></button>
       <button
-        class="control-item"
-        v-show="/\/partners\//.test($route.path)"
-        @click="CHANGE_PAGE_STATUS('Социальное партнерство'); $router.go(-1)"
-      >Вернуться в Социальное партнерство </button>
+        class="header-button"
+        v-show="/\/youngs\//.test($route.path)"
+        @click="CHANGE_PAGE_STATUS('Совет молодежи'); $router.push('/youngs')"
+      ><p>Вернуться в Совет молодежи</p> -->
+       
+      <!-- </button> -->
     </div>
   </nav>
 </template>
@@ -41,7 +52,7 @@ nav.navbar {
   height: 23vh;
   display: flex;
   justify-content: space-between;
-  padding: 2vh 0;
+  /* padding: 2vh 0; */
   background-color: #0065ab;
   background-image: url("~/assets/control/top.png");
   background-size: 100%;
@@ -65,5 +76,22 @@ nav.navbar > .navbar-title > h2 {
   font-weight: 500;
   color: white;
   font-size: 22pt;
+}
+.header-button {
+  width: auto;
+  min-width: 13vw;
+  height: 6vh;
+  text-decoration: none;
+  color: #0159a1;
+  background-color: white;
+  border: none;
+  /* border-radius: 20px; */
+  font-size: 14pt;
+  font-weight: 400;
+}
+.header-button > p {
+    margin: 0;
+    padding: 0vw 3vh;
+
 }
 </style>

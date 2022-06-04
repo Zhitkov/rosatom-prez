@@ -27,6 +27,10 @@ a{
   justify-content: center;
   align-items: center;
 }
+#__layout {
+  height: 100vh;
+  width: 100vw;
+}
 #__nuxt {
   height: 100vh;
   width: 100vw;

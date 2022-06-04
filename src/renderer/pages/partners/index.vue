@@ -1,19 +1,21 @@
 <template>
-  <div class="partners-container flex-center">
+  <div class="partners-container back-img  flex-center">
     <div
       v-show="mainMenu"
       class="partners-items"
     >
-      <div
+      <NuxtLink
+        class="partners-item"
+        :to="index==='youngs'?'/youngs':'/partners/' + index"
         v-for="(partner, index) in partners"
         :key="index"
-        class="partners-item"
       >
-
-        <div @click="CHANGE_PAGE_STATUS(partner.title)" class="control-item">
-          <NuxtLink :to="'/partners/' + index">{{partner.title}}</NuxtLink>
+        <div class="partner-button">
+          <div @click="CHANGE_PAGE_STATUS(partner.title)">
+            {{partner.title}}
+          </div>
         </div>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -50,21 +52,32 @@ export default {
 <style>
 .partners-container {
   width: 100%;
-  height: 73vh;
+  height: 77vh;
 }
 .partners-items {
   display: grid;
   justify-items: center;
   grid-template-columns: auto auto;
-  column-gap: 20px;
-  row-gap: 20px;
+  column-gap: 10vw;
+  row-gap: 6vh;
 }
 .partners-item {
-  width: 100%;
-  height: 100%;
+  width: 30vw;
+  height: 15vh;
   color: white;
   text-align: center;
   background-color: #105ea4;
-  border-radius: 7px;
+  /* border-radius: 7px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.partner-button {
+  text-decoration: none;
+  color: white;
+  background-color: #105ea4;
+  font-size: 15pt;
 }
 </style>

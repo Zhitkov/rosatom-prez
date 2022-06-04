@@ -1,5 +1,8 @@
 <template>
-  <div class="carousel-container flex-center">
+  <div
+    class="carousel-container flex-center"
+    :style="`background-image:url('${items[c]}')`"
+  >
     <div
       class="arrow right"
       @click="switcher(1)"
@@ -10,8 +13,15 @@
         alt=""
       >
     </div>
-    <div class="carousel-items">
-      <div
+    <div
+      v-if="names"
+      class="carousel-items"
+    >
+      <h2
+        class="name"
+        v-html="names[c]"
+      ></h2>
+      <!-- <div
         v-show="c === index"
         class="carousel-item"
         v-for="(item, index) in items"
@@ -21,7 +31,7 @@
           :src="item"
           alt=""
         >
-      </div>
+      </div> -->
     </div>
     <div
       @click="switcher(-1)"
@@ -46,7 +56,13 @@ export default {
   props: {
     currentItem: Number,
     items: Array,
-    arrows: Boolean
+    arrows: Boolean,
+    names: Array
+  },
+  watch: {
+    'currentItem': function () {
+      this.c = this.currentItem;
+    }
   },
   methods: {
     switcher(c) {
@@ -65,12 +81,37 @@ export default {
 <style>
 .carousel-container {
   width: 100vw;
-  height: 73vh;
+  height: 77vh;
   flex-direction: row;
+  justify-content: space-between;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-size: auto 77vh;
+  background-position: center;
 }
 .carousel-items {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.carousel-items > .name {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(0 102 172 / 81%);
+  color: white;
+  margin: 0;
+  font-size: 16pt;
+  font-weight: 500;
+  width: 100%;
+  padding: 20px;
+  flex-direction: column;
+}
+.carousel-items > .name > p {
+  margin: 5px;
+  font-size: 12pt;
 }
 .carousel-item {
   width: 100%;
@@ -78,28 +119,19 @@ export default {
 }
 .carousel-item > img {
   width: 100%;
-  height: 100%;
+  height: 95%;
 }
 .arrow {
-  position: absolute;
-  z-index: 99;
-}
-.arrow.left {
-  left: 91vw;
-  height: 73%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff7a;
-  top: 27vh;
+  height: 100%;
+  min-width: 23%;
+}
+/* .arrow.left {
+  
 }
 .arrow.right {
-  left: 0%;
-  height: 73%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff7a;
-  top: 27vh;
-}
+  
+} */
 </style>

@@ -1,8 +1,7 @@
 <template>
   <div class="">
-    {{currentItem}}
-    <WidgetPhotos @startCarousel="startCarousel" :jpgs="workerPhotos"></WidgetPhotos>
-    <ModalPreview :currentItem="currentItem" v-show="showCarousel" :jpgs="workerPhotos" :arrows="true"></ModalPreview>
+    <WidgetPhotos v-show="!modal" @startCarousel="startCarousel" :jpgs="workerPhotos"></WidgetPhotos>
+    <ModalPreview v-show="modal" :currentItem="currentItem" :jpgs="workerPhotos" :arrows="true"></ModalPreview>
   </div>
 </template>
 
@@ -13,13 +12,13 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      showCarousel: false,
-      currentItem: Number
+      currentItem: 0
     }
   },
   computed: {
     ...mapGetters([
-      'workerPhotos'
+      'workerPhotos',
+      'modal'
     ])
   },
   methods: {
