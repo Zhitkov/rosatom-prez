@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 77vh">
+  <div style="height: 77vh;">
     <div class="control-container back-img flex-center">
       <div class="control-items flex-center">
         <NuxtLink to="/partners">
@@ -24,25 +24,23 @@
 </template>
 
 <script>
-// import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { mapMutations } from 'vuex'
 export default {
   methods: {
     ...mapMutations(['CHANGE_PAGE_STATUS']),
-  }
+  },
 }
 </script>
-
 
 <style>
 body {
   margin: 0;
 }
 .back-img {
-  background-image: url("~/assets/control/bottom.png");
+  background-image: url('~/assets/control/bottom.png');
   background-repeat: no-repeat;
-  background-size: auto;
-  background-position-y: 24vh;
+  background-size: 100% 70%;
+  background-position: bottom;
 }
 .control-container {
   height: 77vh;
@@ -58,8 +56,8 @@ body {
   width: 30vw;
   height: 25vh;
   display: flex;
-  font-size: 22pt;
-  background-color: #1d4d79;
+  font-size: 25pt;
+  background-color: #006eb3;
   color: white;
 }
 
@@ -67,7 +65,7 @@ body {
   text-decoration: none;
   justify-content: center;
   background-color: #e9e9e9;
-  border: 2px solid #1d4d79;
+  border: 2px solid #006eb3;
   border-radius: 50px;
 }
 .control-item > a {

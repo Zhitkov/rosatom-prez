@@ -7,6 +7,8 @@ const winHandler = new BrowserWinHandler({
 })
 
 winHandler.onCreated(_browserWindow => {
+
+  _browserWindow.setMenuBarVisibility(false) // disable top menu
   winHandler.loadPage('/')
   // Or load custom url
   // _browserWindow.loadURL('https://google.com')

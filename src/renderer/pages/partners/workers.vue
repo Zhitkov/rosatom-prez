@@ -1,25 +1,33 @@
 <template>
   <div class="">
-    <WidgetPhotos v-show="!modal" @startCarousel="startCarousel" :jpgs="workerPhotos"></WidgetPhotos>
-    <ModalPreview v-show="modal" :currentItem="currentItem" :jpgs="workerPhotos" :arrows="true"></ModalPreview>
+    <WidgetPhotos
+      v-show="!modal"
+      @startCarousel="startCarousel"
+      :jpgs="workers.jpg"
+    ></WidgetPhotos>
+    <ModalPreview
+      v-show="modal"
+      :currentItem="currentItem"
+      :jpgs="workers.jpg"
+      :arrows="true"
+    ></ModalPreview>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 
-
 export default {
   data() {
     return {
-      currentItem: 0
+      currentItem: 0,
     }
   },
+  mounted() {
+    this.$store.commit('CHANGE_PAGE_STATUS', this.workers.title)
+  },
   computed: {
-    ...mapGetters([
-      'workerPhotos',
-      'modal'
-    ])
+    ...mapGetters(['workers', 'modal']),
   },
   methods: {
     startCarousel(id) {
@@ -30,6 +38,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

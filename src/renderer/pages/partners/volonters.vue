@@ -30,25 +30,18 @@ export default {
   },
   mounted() {
     this.buttonStatus = true;
-    this.$store.commit('SWITCH_MODAL')
+    if (!this.modal) {
+      this.$store.commit('SWITCH_MODAL')
+      this.$store.commit('CHANGE_PAGE_STATUS', this.volonters.title)
+    }
   },
-  // methods: {
-  //   normalizeCarousel() {
-  //     this.buttonStatus=false
-  //   }
-  // },
   computed: {
     ...mapGetters([
       'volonters',
       'modal'
     ])
   },
-  // watch: {
-  //   'currentItem': function () {
-  //     console.log(this.profsouz.names[this.currentItem]);
-  //     this.cirrentName = this.profsouz.names[this.currentItem]
-  //   } 
-  // },
+  
   methods: {
     startCarousel(id) {
       this.currentItem = id;

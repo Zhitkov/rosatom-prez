@@ -25,7 +25,12 @@ export default {
   data() {
     return {
       currentItem: 0,
-      names: [],
+    }
+  },
+  mounted() {
+    this.$store.commit('CHANGE_PAGE_STATUS', this.profsouz.title)
+    if (this.modal) {
+      this.$store.commit('SWITCH_MODAL')
     }
   },
   computed: {
@@ -34,12 +39,6 @@ export default {
       'modal'
     ])
   },
-  // watch: {
-  //   'currentItem': function () {
-  //     console.log(this.profsouz.names[this.currentItem]);
-  //     this.cirrentName = this.profsouz.names[this.currentItem]
-  //   } 
-  // },
   methods: {
     startCarousel(id) {
       this.currentItem = id;

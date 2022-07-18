@@ -1,29 +1,15 @@
 <template>
-  <nav
-    v-show="!modal"
-    class="navbar"
-  >
+  <nav class="navbar">
     <div class="navbar-title">
       <h2 v-show="$route.path === '/'">Работа с персоналом</h2>
-      <h2 v-show="$route.path !== '/'">{{pageStatus}}</h2>
+      <h2 v-show="$route.path !== '/'">{{ pageStatus }}</h2>
       <button
         class="header-button"
         v-show="($route.path !== '/')"
-        @click="$router.go(-1)"
-      ><p>Назад</p> </button>
-        <!-- v-show="($route.path !== '/') && !/\/partners\//.test($route.path) && !/\/youngs\//.test($route.path) && !/\/youngs/.test($route.path)" -->
-      <!-- <button
-        class="header-button"
-        v-show="/\/partners\//.test($route.path) || /\/youngs/.test($route.path)"
-        @click="CHANGE_PAGE_STATUS('Социальное партнерство'); $router.push('/partners')"
-      ><p>Вернуться в Социальное партнерство </p></button>
-      <button
-        class="header-button"
-        v-show="/\/youngs\//.test($route.path)"
-        @click="CHANGE_PAGE_STATUS('Совет молодежи'); $router.push('/youngs')"
-      ><p>Вернуться в Совет молодежи</p> -->
-       
-      <!-- </button> -->
+        @click="!modal?$router.go(-1):SWITCH_MODAL()"
+      >
+        <p>Назад</p>
+      </button>
     </div>
   </nav>
 </template>
@@ -34,15 +20,11 @@ import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'myHeader',
   methods: {
-    ...mapMutations(['CHANGE_PAGE_STATUS', 'SWITCH_MODAL']),
+    ...mapMutations(['SWITCH_MODAL'])
   },
   computed: {
-    ...mapGetters([
-      'modal',
-      'modalStatus',
-      'pageStatus'
-    ])
-  }
+    ...mapGetters(['modal', 'modalStatus', 'pageStatus']),
+  },
 }
 </script>
 
@@ -52,10 +34,9 @@ nav.navbar {
   height: 23vh;
   display: flex;
   justify-content: space-between;
-  /* padding: 2vh 0; */
   background-color: #0065ab;
-  background-image: url("~/assets/control/top.png");
-  background-size: 100%;
+  background-image: url('~/assets/control/top.png');
+  background-size: 100% 100vh;
   background-repeat: no-repeat;
 }
 nav.navbar > .navbar-logo {
@@ -75,7 +56,7 @@ nav.navbar > .navbar-title {
 nav.navbar > .navbar-title > h2 {
   font-weight: 500;
   color: white;
-  font-size: 22pt;
+  font-size: 30pt;
 }
 .header-button {
   width: auto;
@@ -83,15 +64,16 @@ nav.navbar > .navbar-title > h2 {
   height: 6vh;
   text-decoration: none;
   color: white;
-  background-color: #277ec4;
+  background-color: rgb(255 255 255 / 32%);
+  box-shadow: rgb(255 255 255 / 32%) 0px 0px 15px;
   border: none;
   border-radius: 20px;
-  font-size: 14pt;
+  font-size: 16pt;
   font-weight: 400;
 }
 .header-button > p {
-    margin: 0;
-    padding: 0vw 3vh;
-
+  margin: 0;
+  padding: 0vw 3vh;
+  font-size: 20pt;
 }
 </style>

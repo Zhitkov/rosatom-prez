@@ -1,10 +1,10 @@
 <template>
-  <div class="preview-container flex-center">
-    <div class="preview-items">
-      <WidgetCarousel :currentItem="currentItem" :arrows="arrows" :items="jpgs" :names="names"></WidgetCarousel>  
+  <div style="align-items: end;" class="preview-container flex-center">
+    <div class="preview-items flex-center">
+      <WidgetCarousel :currentItem="currentItem" :arrows="arrows" :items="jpgs"  :buttonStatus="true" :names="names"></WidgetCarousel>  
     </div>
-    <div class="bottom-close flex-center">
-      <button v-if="!buttonStatus" class="preview-button" @click="SWITCH_MODAL()">Закрыть</button>
+    <div class="bottom-close">
+      <!-- <button v-if="!buttonStatus" class="preview-button" @click="SWITCH_MODAL()">Закрыть</button> -->
       <button v-if="buttonStatus" class="preview-button" @click="normalizeCarousel()">{{buttonStatus}}</button>
     </div>
   </div>
@@ -39,27 +39,32 @@ export default {
 <style>
 .preview-container {
     width: 100vw;
-    height: 100vh;
+    height: 77vh;
     position: absolute;
     z-index: 1;
-    flex-direction: column
+    justify-content: flex-end;
+    flex-direction: column;
+    
 
 }
 .preview-items {
   width: 100%;
-  height: 80%;
+  height: 100%;
 }
 
 .bottom-close {
-  /* background-color: #105ea4; */
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .preview-button{
-  width: 30vw;
+  width: 19vw;
+  margin: 30px;
   height: 13vh;
   text-decoration: none;
   color: white;
-  background-color: #0159a1 ;
+  background-color: #006eb3 ;
   border: none;
   border-radius: 30px;
   font-size: 14pt;

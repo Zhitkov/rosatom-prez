@@ -1,6 +1,10 @@
 <template>
-  <div class="">
-    <WidgetCarousel :items="composition.svg" :arrows="false" :currentItem="0"></WidgetCarousel>
+  <div class="composition-container">
+    <WidgetCarousel
+      :items="composition.svg"
+      :arrows="true"
+      :currentItem="0"
+    ></WidgetCarousel>
   </div>
 </template>
 
@@ -12,12 +16,17 @@ export default {
   computed: {
     ...mapGetters([
       'composition',
-    ])
-  }
+    ]),
+  },
+  mounted() {
+    this.$store.commit('CHANGE_PAGE_STATUS', this.composition.title)
+  },
 
 }
 </script>
 
 <style>
-
+.composition-container {
+  height: 77vh;
+}
 </style>

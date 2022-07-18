@@ -1,18 +1,15 @@
 <template>
-  <div class="partners-container back-img  flex-center">
-    <div
-      v-show="mainMenu"
-      class="partners-items"
-    >
+  <div class="partners-container back-img flex-center">
+    <div v-show="mainMenu" class="partners-items">
       <NuxtLink
         class="partners-item"
-        :to="index==='youngs'?'/youngs':'/partners/' + index"
+        :to="index === 'youngs' ? '/youngs' : '/partners/' + index"
         v-for="(partner, index) in partners"
         :key="index"
       >
         <div class="partner-button">
-          <div @click="CHANGE_PAGE_STATUS(partner.title)">
-            {{partner.title}}
+          <div>
+            {{ partner.title }}
           </div>
         </div>
       </NuxtLink>
@@ -23,29 +20,30 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 
-
 export default {
   data() {
     return {
-      mainMenu: true
+      mainMenu: true,
     }
   },
   methods: {
-    ...mapMutations(['CHANGE_MODAL_STATUS', 'CHANGE_PAGE_STATUS', 'SWITCH_MODAL']),
+    ...mapMutations([
+      'CHANGE_MODAL_STATUS',
+      'CHANGE_PAGE_STATUS',
+      'SWITCH_MODAL',
+    ]),
     switchModal(modalStatus, pageStatus) {
-      this.SWITCH_MODAL();
-      this.CHANGE_MODAL_STATUS(modalStatus);
+      this.SWITCH_MODAL()
+      this.CHANGE_MODAL_STATUS(modalStatus)
       this.CHANGE_PAGE_STATUS(pageStatus)
-    }
+    },
+  },
+  mounted() {
+    this.$store.commit('CHANGE_PAGE_STATUS', 'Социальное партнерство')
   },
   computed: {
-    ...mapGetters([
-      'partners',
-      'modal',
-      'modalStatus'
-    ])
-  }
-
+    ...mapGetters(['partners', 'modal', 'modalStatus']),
+  },
 }
 </script>
 
@@ -66,18 +64,17 @@ export default {
   height: 15vh;
   color: white;
   text-align: center;
-  background-color: #105ea4;
+  background-color: #006eb3;
   border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .partner-button {
   text-decoration: none;
   color: white;
-  background-color: #105ea4;
-  font-size: 15pt;
+  background-color: #006eb3;
+  font-size: 20pt;
 }
 </style>

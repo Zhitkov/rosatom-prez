@@ -1,6 +1,11 @@
 <template>
-  <div class="">
-    <WidgetCarousel :currentItem="0" :arrows="true" :items="social.jpg" :names="social.info.title"></WidgetCarousel>
+  <div style="height: 77vh;">
+    <WidgetCarousel
+      :currentItem="0"
+      :arrows="true"
+      :items="social.svg"
+      :buttonStatus="false"
+    ></WidgetCarousel>
   </div>
 </template>
 
@@ -8,32 +13,13 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  // data() {
-  //   return {
-  //     currentItem: 0,
-  //     names: [],
-  //   }
-  // },
   computed: {
-    ...mapGetters([
-      'social'
-    ])
+    ...mapGetters(['social']),
   },
-  // watch: {
-  //   'currentItem': function () {
-  //     console.log(this.profsouz.names[this.currentItem]);
-  //     this.cirrentName = this.profsouz.names[this.currentItem]
-  //   } 
-  // },
-  methods: {
-    startCarousel(id) {
-      this.currentItem = id;
-      this.showCarousel = !this.showCarousel
-    }
-  }
+  mounted() {
+    this.$store.commit('CHANGE_PAGE_STATUS', this.social.title)
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -1,6 +1,10 @@
 <template>
-  <div class="back-img">
-    <WidgetCarousel :currentItem="0" :arrows="false" :items="veterans.jpg" :names="veterans.info.title"></WidgetCarousel>
+  <div class="veterans-container back-img">
+    <WidgetCarousel
+      :items="veterans.svg"
+      :arrows="false"
+      :currentItem="0"
+    ></WidgetCarousel>
   </div>
 </template>
 
@@ -13,12 +17,14 @@ export default {
       'veterans'
     ])
   },
-  // methods: {
-    
-  // }
+  mounted() {
+    this.$store.commit('CHANGE_PAGE_STATUS', this.veterans.title)
+  },
 }
 </script>
 
 <style>
-
+.veterans-container {
+  height: 77vh;
+}
 </style>

@@ -1,117 +1,105 @@
 <template>
-  <div
-    class="carousel-container flex-center"
-    :style="`background-image:url('${items[c]}')`"
-  >
-    <div
-      class="arrow right"
-      @click="switcher(1)"
-      v-show="arrows"
-    >
-      <img
-        src="@/assets/icons/arrows/left.svg"
-        alt=""
-      >
+  <div class="carousel-container flex-center">
+    <!-- :style="`background-image:url('${items[c]}')`" -->
+    <div class="arrow right" @click="switcher(-1)" v-show="arrows">
+      <img src="@/assets/icons/arrows/left.svg" alt="" />
     </div>
-    <div
-      v-if="names"
-      class="carousel-items"
-    >
-      <h2
-        class="name"
-        v-html="names[c]"
-      ></h2>
-      <!-- <div
-        v-show="c === index"
-        class="carousel-item"
-        v-for="(item, index) in items"
-        :key="index"
-      >
-        <img
-          :src="item"
-          alt=""
-        >
-      </div> -->
+    <div class="carousel-items all-size">
+      <img style="height: 90%;" class="all-size" :src="items[c]" alt="" />
+      <h2 v-if="names" class="name">
+        <template v-if="names[c][1]">
+          {{ names[c][1] }}
+          <br />
+        </template>
+        {{ names[c][0] }}
+      </h2>
     </div>
-    <div
-      @click="switcher(-1)"
-      class="arrow left"
-      v-show="arrows"
-    >
-      <img
-        src="@/assets/icons/arrows/right.svg"
-        alt=""
-      >
+    <div @click="switcher(1)" class="arrow left" v-show="arrows">
+      <!-- <img class="cross" :style="buttonStatus?'opacity: 1':'opacity: 0'" @click="SWITCH_MODAL()" src="@/assets/icons/cross.svg" alt="" /> -->
+      <img src="@/assets/icons/arrows/right.svg" alt="" />
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   data: function () {
     return {
-      c: this.currentItem
+      c: this.currentItem,
     }
   },
   props: {
     currentItem: Number,
     items: Array,
     arrows: Boolean,
-    names: Array
+    names: Array,
+    buttonStatus: Boolean,
   },
   watch: {
-    'currentItem': function () {
-      this.c = this.currentItem;
-    }
+    currentItem: function () {
+      this.c = this.currentItem
+    },
   },
   methods: {
+    ...mapMutations(['SWITCH_MODAL']),
     switcher(c) {
       this.c += c
       if (this.c === -1) {
-        this.c = this.items.length - 1;
+        this.c = this.items.length - 1
       }
       if (this.c === this.items.length) {
         this.c = 0
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style>
+.all-size {
+  width: 100%;
+  height: 100%;
+}
 .carousel-container {
   width: 100vw;
-  height: 77vh;
+  height: 95%;
   flex-direction: row;
   justify-content: space-between;
   background-repeat: no-repeat;
   background-size: auto;
-  background-size: auto 77vh;
+  background-size: auto 95%;
   background-position: center;
 }
 .carousel-items {
-  width: 100%;
+  /* width: 100%; */
+  width: auto;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  flex-direction: column;
 }
 .carousel-items > .name {
+  /* position: absolute; */
   display: flex;
   text-align: center;
   justify-content: center;
-  background-color: rgb(0 102 172 / 81%);
+  flex-direction: column;
+  background-color: rgb(0 102 172 / 100%);
   color: white;
   margin: 0;
-  font-size: 16pt;
-  font-weight: 500;
+  font-size: 23pt;
   width: 100%;
-  padding: 20px;
-  flex-direction: column;
+  font-weight: 500;
+  /* width: 100%; */
+  /* width: 35%; */
+  padding: 5px 0;
 }
 .carousel-items > .name > p {
   margin: 5px;
-  font-size: 12pt;
+  font-size: 13pt;
 }
 .carousel-item {
   width: 100%;
@@ -124,14 +112,18 @@ export default {
 .arrow {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
-  min-width: 23%;
+  align-items: flex-end;
+  height: 70vh;
+  padding-bottom: 7vh;
+  /* min-width: 23%; */
 }
-/* .arrow.left {
-  
+.arrow > img {
+  width: 60%;
+}
+
+.arrow.left > img.cross {
+  padding: 20px;
 }
 .arrow.right {
-  
-} */
+}
 </style>

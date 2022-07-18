@@ -41,7 +41,9 @@ export default class BrowserWinHandler {
         ...this.options,
         webPreferences: {
           ...this.options.webPreferences,
-          webSecurity: isProduction, // disable on dev to allow loading local resources
+          webSecurity: isProduction,
+          removeMenu: true, // disable on dev to allow loading local resources
+	  // webSecurity: false, // disable on dev to allow loading local resources
           nodeIntegration: true, // allow loading modules via the require () function
           contextIsolation: false, // https://github.com/electron/electron/issues/18037#issuecomment-806320028
         }
