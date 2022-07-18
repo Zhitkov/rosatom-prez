@@ -5,7 +5,7 @@
     </div>
     <div class="bottom-close">
       <!-- <button v-if="!buttonStatus" class="preview-button" @click="SWITCH_MODAL()">Закрыть</button> -->
-      <button v-if="buttonStatus" class="preview-button" @click="normalizeCarousel()">{{buttonStatus}}</button>
+      <button v-if="modalStatus" class="preview-button" @click="SWITCH_MODAL();CHANGE_MODAL_STATUS()">Перейти к галерее фотографий</button>
     </div>
   </div>
 </template>
@@ -24,14 +24,14 @@ export default {
     jpgs: Array,
     currentItem: Number,
     names: Array,
-    buttonStatus: String
+    modalStatus: Boolean
   },
   methods: {
-    ...mapMutations(['SWITCH_MODAL']),
-    normalizeCarousel() {
-      this.$emit('normalizeCarousel')
-      this.SWITCH_MODAL()
-    }
+    ...mapMutations(['SWITCH_MODAL', 'CHANGE_MODAL_STATUS']),
+    // normalizeCarousel() {
+    //   this.$emit('normalizeCarousel')
+    //   this.SWITCH_MODAL()
+    // }
   }
 }
 </script>

@@ -5,7 +5,7 @@ function importAll(r) {
 
 
 export const state = () => ({
-    modalStatus: '',
+    modalStatus: false,
     pageStatus: '',
     modal: false,
     mainMenu: true,
@@ -109,8 +109,8 @@ export const getters = {
 
 
 export const mutations = {
-    CHANGE_MODAL_STATUS(state, modalStatus) {
-        state.modalStatus = modalStatus;
+    CHANGE_MODAL_STATUS(state) {
+        state.modalStatus = !state.modalStatus;
     },
     SWITCH_MODAL(state) {
         state.modal = !state.modal;

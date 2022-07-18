@@ -1,5 +1,5 @@
 <template>
-  <div class="carousel-container flex-center">
+  <div :style="!arrows?'justify-content: center':''" class="carousel-container flex-center">
     <!-- :style="`background-image:url('${items[c]}')`" -->
     <div class="arrow right" @click="switcher(-1)" v-show="arrows">
       <img src="@/assets/icons/arrows/left.svg" alt="" />

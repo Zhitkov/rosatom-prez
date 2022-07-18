@@ -32,9 +32,8 @@ export default {
       'CHANGE_PAGE_STATUS',
       'SWITCH_MODAL',
     ]),
-    switchModal(modalStatus, pageStatus) {
+    switchModal(pageStatus) {
       this.SWITCH_MODAL()
-      this.CHANGE_MODAL_STATUS(modalStatus)
       this.CHANGE_PAGE_STATUS(pageStatus)
     },
   },
@@ -42,7 +41,7 @@ export default {
     this.$store.commit('CHANGE_PAGE_STATUS', 'Социальное партнерство')
   },
   computed: {
-    ...mapGetters(['partners', 'modal', 'modalStatus']),
+    ...mapGetters(['partners', 'modal']),
   },
 }
 </script>

@@ -4,6 +4,7 @@
       v-show="!modal"
       @startCarousel="startCarousel"
       :jpgs="workers.jpg"
+      :ierarhi="false"
     ></WidgetPhotos>
     <ModalPreview
       v-show="modal"

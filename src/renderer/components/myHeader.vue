@@ -6,7 +6,7 @@
       <button
         class="header-button"
         v-show="($route.path !== '/')"
-        @click="!modal?$router.go(-1):SWITCH_MODAL()"
+        @click="!modal ? $router.go(-1) : allModals()"
       >
         <p>Назад</p>
       </button>
@@ -20,10 +20,16 @@ import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'myHeader',
   methods: {
-    ...mapMutations(['SWITCH_MODAL'])
+    ...mapMutations(['SWITCH_MODAL', 'CHANGE_MODAL_STATUS']),
+    allModals() {
+      this.SWITCH_MODAL();
+      if (this.modalStatus) {
+        this.CHANGE_MODAL_STATUS();
+      }
+    }
   },
   computed: {
-    ...mapGetters(['modal', 'modalStatus', 'pageStatus']),
+    ...mapGetters(['modal', 'pageStatus', 'modalStatus']),
   },
 }
 </script>

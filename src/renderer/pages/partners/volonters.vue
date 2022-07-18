@@ -7,12 +7,11 @@
       :ierarhi="false"
     ></WidgetPhotos>
     <ModalPreview
+      :arrows="!modalStatus"
       v-show="modal"
       :currentItem="currentItem"
-      :buttonStatus="buttonStatus?'Перейти к галерее фотографий':''"
-      :jpgs="buttonStatus?volonters.svg:volonters.jpg"
-      :arrows="!buttonStatus"
-      @normalizeCarousel="buttonStatus=false"
+      :modalStatus="modalStatus"
+      :jpgs="modalStatus?volonters.svg:volonters.jpg"
     ></ModalPreview>
   </div>
 </template>
@@ -25,20 +24,23 @@ export default {
   data() {
     return {
       currentItem: 0,
-      buttonStatus: true
     }
   },
   mounted() {
-    this.buttonStatus = true;
     if (!this.modal) {
       this.$store.commit('SWITCH_MODAL')
       this.$store.commit('CHANGE_PAGE_STATUS', this.volonters.title)
+      this.$store.commit('CHANGE_MODAL_STATUS')
     }
   },
+  // methods: {
+  //   ...mapMutations(['CHANGE_MODAL_STATUS']),
+  // },
   computed: {
     ...mapGetters([
       'volonters',
-      'modal'
+      'modal',
+      'modalStatus'
     ])
   },
   
