@@ -6,9 +6,8 @@
         :key="id"
         class="photos-item"
         @click="startCarousel(id)"
-        :style="`background-image: url('${jpg}'); height: ${
-          ierarhi ? '400px' : '200px'
-        }`"
+        :style="`background-position: center center; background-image: url('${jpg}'); 
+        height: ${ ierarhi ? '33vh' : '20vh' } ;width: ${ierarhi ? '18vw' : 'auto'} `"
       >
         <div class="info" v-if="names">
           <p class="role">{{ names[id][1] }}</p>
@@ -57,8 +56,8 @@ export default {
 }
 .photos-item {
   width: auto;
-  max-width: 270px;
-  min-width: 400px;
+  max-width: 23vw;
+  min-width: 18vw;
   /* height: 150px; */
   margin: 3% 5%;
   text-align: center;
@@ -77,10 +76,10 @@ export default {
   margin: 0;
 }
 .photos-item > .info > p.role {
-  font-size: 13pt;
+  font-size: 12pt;
 }
 .photos-item > .info > p.name {
-  font-size: 15pt;
+  font-size: 13pt;
 }
 .photos-item > img {
   width: 100%;

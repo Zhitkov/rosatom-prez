@@ -15,20 +15,20 @@ export const state = () => ({
         },
         partners: {
             social: {
-                title: 'Приоритеты социальной политики',
+                title: 'ПРИОРИТЕТЫ СОЦИАЛЬНОЙ ПОЛИТИКИ',
                 svg: importAll(require.context("~/assets/partners/social", false, /./)),
             },
             workers: {
-                title: 'Мероприятия для работников',
+                title: 'МЕРОПРИЯТИЯ ДЛЯ РАБОТНИКОВ',
                 jpg: importAll(require.context("~/assets/partners/workers", false, /./))
             },
             volonters: {
-                title: 'Волонтерское движение',
+                title: 'ВОЛОНТЕРСКОЕ ДВИЖЕНИЕ',
                 svg: importAll(require.context('~/assets/partners/volonters/prez/', false, /.svg/)),
                 jpg: importAll(require.context("~/assets/partners/volonters", false, /./))
             },
             profsouz: {
-                title: 'Профсоюзный комитет',
+                title: 'ПРОФСОЮЗНЫЙ КОМИТЕТ',
                 jpg: importAll(require.context("~/assets/partners/profsouz", false, /./)),
                 names: [
                     ["Берёзкин Эдуард Викторович",''],
@@ -46,18 +46,18 @@ export const state = () => ({
                 ]
             },
             youngs: {
-                title: 'Совет Молодежи',
+                title: 'СОВЕТ МОЛОДЕЖИ',
                 composition: {
-                    title: 'Состав',
+                    title: 'СОСТАВ',
                     svg: importAll(require.context('~/assets/partners/youngs/composition', false, /.svg/))
                 },
                 direction: {
-                    title: 'Направления деятельности',
+                    title: 'НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ',
                     svg: importAll(require.context('~/assets/partners/youngs/direction', false, /.svg/))
                 }
             },
             veterans: {
-                title: 'Совет Ветеранов',
+                title: 'СОВЕТ ВЕТЕРАНОВ',
                 svg: importAll(require.context('~/assets/partners/veterans', false, /.svg/))
             },
 

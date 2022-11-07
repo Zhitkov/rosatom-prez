@@ -38,7 +38,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.commit('CHANGE_PAGE_STATUS', 'Социальное партнерство')
+    this.$store.commit('CHANGE_PAGE_STATUS', 'СОЦИАЛЬНОЕ ПАРТНЕРСТВО')
   },
   computed: {
     ...mapGetters(['partners', 'modal']),
@@ -74,6 +74,6 @@ export default {
   text-decoration: none;
   color: white;
   background-color: #006eb3;
-  font-size: 20pt;
+  font-size: 16pt;
 }
 </style>

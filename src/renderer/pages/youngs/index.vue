@@ -6,14 +6,14 @@
           <div
             class="control-item rosatom-menu-button"
           >
-            <p class="flex-center">Состав</p>
+            <p class="flex-center">СОСТАВ</p>
           </div>
         </NuxtLink>
         <NuxtLink to="/youngs/direction">
           <div
             class="control-item rosatom-menu-button"
           >
-          <p class="flex-center"> Направления деятельности</p>
+          <p class="flex-center">НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ</p>
           </div>
         </NuxtLink>
       </div>

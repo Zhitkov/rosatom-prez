@@ -4,18 +4,18 @@
       <div class="control-items flex-center">
         <NuxtLink to="/partners">
           <div
-            @click="CHANGE_PAGE_STATUS('Социальное партнерство')"
+            @click="CHANGE_PAGE_STATUS('СОЦИАЛЬНОЕ ПАРТНЕРСТВО')"
             class="control-item rosatom-menu-button"
           >
-            <p class="flex-center">Социальное партнерство</p>
+            <p class="flex-center">СОЦИАЛЬНОЕ ПАРТНЕРСТВО</p>
           </div>
         </NuxtLink>
         <NuxtLink to="/learn">
           <div
-            @click="CHANGE_PAGE_STATUS('Обучение и развитие')"
+            @click="CHANGE_PAGE_STATUS('ОБУЧЕНИЕ И РАЗВИТИЕ')"
             class="control-item rosatom-menu-button"
           >
-            <p class="flex-center">Обучение и развитие</p>
+            <p class="flex-center">ОБУЧЕНИЕ И РАЗВИТИЕ</p>
           </div>
         </NuxtLink>
       </div>
@@ -56,7 +56,7 @@ body {
   width: 30vw;
   height: 25vh;
   display: flex;
-  font-size: 25pt;
+  font-size: 20pt;
   background-color: #006eb3;
   color: white;
 }
